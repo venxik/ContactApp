@@ -43,25 +43,27 @@ const SecondaryHeader = (props) => {
             height: ToolbarHeight,
           },
         ]}>
-        <TouchableOpacity
-          style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}
-          onPress={
-            typeof props.onPressLeft !== 'undefined'
-              ? props.onPressLeft
-              : undefined
-          }>
-          {typeof props.onPressLeft !== 'undefined' && <BackButton />}
-        </TouchableOpacity>
-        <View style={{flex: 2, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{position: 'absolute', left: 20, zIndex: 1}}>
+          <TouchableOpacity
+            style={{flex: 1}}
+            onPress={
+              typeof props.onPressLeft !== 'undefined'
+                ? props.onPressLeft
+                : undefined
+            }>
+            {typeof props.onPressLeft !== 'undefined' && <BackButton />}
+          </TouchableOpacity>
+        </View>
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
           <Text
             color={Color.color_0}
             bold
             size={17}
-            style={{flex: 0, fontWeight: 'bold'}}>
+            style={{fontWeight: 'bold'}}>
             {headerTitle}
           </Text>
         </View>
-        <View style={{flex: 1, alignItems: 'flex-end'}}>
+        <View style={{position: 'absolute', right: 20}}>
           {props.renderRight}
         </View>
       </View>

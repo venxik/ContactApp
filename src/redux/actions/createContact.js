@@ -1,4 +1,4 @@
-import { FIRST_NAME, LAST_NAME, AGE, PHOTO_LINK } from "../constants/constants";
+import { FIRST_NAME, LAST_NAME, AGE, PHOTO_LINK, RESET_CONTACT_DATA } from "../constants/constants";
 
 const setFirstName = (data) => {
   return {
@@ -25,9 +25,16 @@ const setPhotoLink = (data) => {
   }
 }
 
+const resetContactData = () => {
+  return {
+    type: RESET_CONTACT_DATA
+  }
+}
+
 export {
   setFirstName,
   setLastName,
   setAge,
-  setPhotoLink
+  setPhotoLink,
+  resetContactData
 }

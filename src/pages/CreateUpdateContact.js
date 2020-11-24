@@ -19,6 +19,7 @@ import {
   setLastName,
   setAge,
   setPhotoLink,
+  resetContactData,
 } from '../redux/actions/createContact';
 
 const CreateUpdateContact = ({navigation, route}) => {
@@ -32,6 +33,8 @@ const CreateUpdateContact = ({navigation, route}) => {
     age: ageRedux,
     photoLink: photoLinkRedux,
   } = useSelector((state) => state.set_create_contact_reducers);
+
+  console.log(firstNameRedux, lastNameRedux, ageRedux, photoLinkRedux)
 
   const dispatch = useDispatch();
 
@@ -70,16 +73,7 @@ const CreateUpdateContact = ({navigation, route}) => {
     photoLink: params ? photo : photoLinkRedux,
   };
 
-  useEffect(() => {
-    if (params) {
-      (defaultValue.firstName = firstName),
-        (defaultValue.lastName = lastName),
-        (defaultValue.age = age.toString()),
-        (defaultValue.photoLink = photo);
-    }
-  }, [params]);
-
-  const {handleSubmit, errors, control} = useForm({
+  const {handleSubmit, errors, control, reset} = useForm({
     defaultValues: defaultValue,
   });
 
@@ -120,6 +114,8 @@ const CreateUpdateContact = ({navigation, route}) => {
       })
         .then((v) => {
           setLoading(false);
+          dispatch(resetContactData());
+          reset();
           if (v.error) {
             Alert.alert(v.error, v.message);
           } else {
@@ -184,7 +180,7 @@ const CreateUpdateContact = ({navigation, route}) => {
           rules={{pattern: {value: /^[0-9]*$/, message: 'Number Only'}, required: 'Age is required'}}
           name={'age'}
           error={errors.age}
-          keyboardType={'number-pad'}
+          keyboardType={'numeric'}
           placeholder={'Age'}
           setRedux={setAgeToRedux}
         />

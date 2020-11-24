@@ -14,5 +14,8 @@ export const LAST_NAME = "LAST_NAME"
 export const AGE = "AGE"
 export const PHOTO_LINK = "PHOTO_LINK"
 
+export const RESET_CONTACT_DATA = "RESET_CONTACT_DATA"
+
+
 
 

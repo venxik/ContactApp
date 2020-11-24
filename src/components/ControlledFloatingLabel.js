@@ -1,11 +1,11 @@
-import React, {forwardRef} from 'react';
+import React from 'react';
 import {TextInput, View, Text, StyleSheet} from 'react-native';
 import {DeviceWidth} from '../Constant/Constant';
 import {Controller} from 'react-hook-form';
 import Color from '../Constant/Color';
 
-const ControlledFloatingLabel = forwardRef(
-  ({setRedux, name, title, control, error, placeholder, rules, ...props}, ref) => {
+const ControlledFloatingLabel = (
+  ({setRedux, name, title, control, error, placeholder, rules, ...props}) => {
     return (
       <View style={Styles.container}>
         <View style={{borderBottomWidth: 1, borderBottomColor: 'lightgray'}}>
@@ -21,7 +21,7 @@ const ControlledFloatingLabel = forwardRef(
                 }}
                 style={Styles.textInput}
                 onBlur={onBlur}
-                value={value}
+                value={value.toString()}
                 placeholder={placeholder}
                 {...props}
               />
@@ -31,7 +31,7 @@ const ControlledFloatingLabel = forwardRef(
         {error && <Text style={Styles.errorText}>{error.message}</Text>}
       </View>
     );
-  },
+  }
 );
 export default ControlledFloatingLabel;
 const Styles = StyleSheet.create({
